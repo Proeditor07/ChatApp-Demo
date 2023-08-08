@@ -7,6 +7,12 @@ const app = express();
 const socket = require("socket.io");
 require("dotenv").config();
 
+
+app.use(function (request, response, next) {
+  response.header("Access-Control-Allow-Origin", "*");
+  response.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
 app.use(cors());
 app.use(express.json());
 
