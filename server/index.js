@@ -9,7 +9,7 @@ require("dotenv").config();
 
 app.use(cors(
   {
-    origin:["https://chatappdemo.onrender.com"],
+    origin:["https://chat-app-demo-one.vercel.app"],
     methods:["POST", "GET"],
     credentials: true
   }
