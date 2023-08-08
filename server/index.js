@@ -8,7 +8,7 @@ const socket = require("socket.io");
 require("dotenv").config();
 app.use(cors(
   {
-    origin:[""],
+    origin:["https://chat-app-demo-frontend.vercel.app"],
     methods:["POST", "GET"],
     credentials: true
   }
