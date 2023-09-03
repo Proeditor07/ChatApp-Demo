@@ -8,6 +8,9 @@ import ChatContainer from "../components/ChatContainer";
 import Contacts from "../components/Contacts";
 import Welcome from "../components/Welcome";
 
+const socket = io("https://chat-app-demo-api.vercel.app", {
+  withCredentials: true,
+});
 export default function Chat() {
   const navigate = useNavigate();
   const socket = useRef();
