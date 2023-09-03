@@ -6,7 +6,7 @@ const messageRoutes = require("./routes/messages");
 const socket = require("socket.io");
 const app = express();
 require("dotenv").config();
-app.use(cors());
+app.use(cors({ origin: "https://chat-app-demo-frontend.vercel.app/"}));
 // app.use(cors({ origin: "https://chat-app-demo-frontend.vercel.app" }));
 // app.use(function (req, res, next) {
 //   //Enabling CORS
