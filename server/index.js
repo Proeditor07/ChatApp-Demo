@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 const authRoutes = require("./routes/auth");
 const messageRoutes = require("./routes/messages");
 const app = express();
-const socket = require("socket.io")(http,{
+const socket = require("socket.io")(https,{
   cors : {
     origin:"*"
   }
