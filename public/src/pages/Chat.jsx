@@ -9,12 +9,12 @@ import Contacts from "../components/Contacts";
 import Welcome from "../components/Welcome";
 
 export default function Chat() {
-const socket = io("https://chat-app-demo-api.vercel.app", {
-  withCredentials: true,
-  extraHeaders: {
-    "my-custom-header": "abcd"
-  }
-});
+// const socket = io("https://chat-app-demo-api.vercel.app", {
+//   withCredentials: true,
+//   extraHeaders: {
+//     "my-custom-header": "abcd"
+//   }
+// });
   const navigate = useNavigate();
   const socket = useRef();
   const [contacts, setContacts] = useState([]);
