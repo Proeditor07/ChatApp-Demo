@@ -36,13 +36,13 @@ app.use("/api/messages", messageRoutes);
 const server = app.listen(process.env.PORT, () =>
   console.log(`Server started on ${process.env.PORT}`)
 );
-const io = socket(server, {
+const io = new Server(server, {
   cors: {
-    origin: "*",
-    credentials: true,
-  },
+    origin: "https://chat-app-demo-frontend.vercel.app",
+    allowedHeaders: ["my-custom-header"],
+    credentials: true
+  }
 });
-
 
 global.onlineUsers = new Map();
 io.on("connection", (socket) => {
