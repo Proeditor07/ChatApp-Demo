@@ -6,7 +6,20 @@ const messageRoutes = require("./routes/messages");
 const app = express();
 const socket = require("socket.io");
 require("dotenv").config();
+const corsOptions = {
+  origin: "*",
+  optionsSuccessStatus: 200
+};
+const io = require("socket.io")(server, {
+  cors: {
+    origin: "*",
+    methods: ["PUT", "GET", "POST", "DELETE", "OPTIONS"],
+    credentials: false
+  }
+  transports: ['websocket']
+});
 
+app.use(cors(corsOptions));
 app.use(cors());
 // app.use(cors());
 // app.use(function (req, res, next) {
@@ -43,21 +56,7 @@ const server = app.listen(process.env.PORT, () =>
 //     credentials: true,
 //   },
 // });
-var cors = require("cors");
-const corsOptions = {
-  origin: "*",
-  optionsSuccessStatus: 200
-};
-const io = require("socket.io")(server, {
-  cors: {
-    origin: "*",
-    methods: ["PUT", "GET", "POST", "DELETE", "OPTIONS"],
-    credentials: false
-  }
-  transports: ['websocket']
-});
 
-app.use(cors(corsOptions));
 
 global.onlineUsers = new Map();
 io.on("connection", (socket) => {
