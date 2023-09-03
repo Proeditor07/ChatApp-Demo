@@ -4,7 +4,11 @@ const mongoose = require("mongoose");
 const authRoutes = require("./routes/auth");
 const messageRoutes = require("./routes/messages");
 const app = express();
-const socket = require("socket.io");
+const socket = require("socket.io")(http,{
+  cors : {
+    origin:"*"
+  }
+});
 require("dotenv").config();
 app.use(cors(
   {
