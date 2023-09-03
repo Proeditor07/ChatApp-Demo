@@ -3,6 +3,7 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 const authRoutes = require("./routes/auth");
 const messageRoutes = require("./routes/messages");
+const socket = require("socket.io");
 const app = express();
 require("dotenv").config();
 app.use(cors());
