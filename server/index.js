@@ -37,12 +37,27 @@ app.use("/api/messages", messageRoutes);
 const server = app.listen(process.env.PORT, () =>
   console.log(`Server started on ${process.env.PORT}`)
 );
-const io = socket(server, {
+// const io = socket(server, {
+//   cors: {
+//     origin: "https://chat-app-demo-frontend.vercel.app",
+//     credentials: true,
+//   },
+// });
+var cors = require("cors");
+const corsOptions = {
+  origin: "*",
+  optionsSuccessStatus: 200
+};
+const io = require("socket.io")(server, {
   cors: {
-    origin: "https://chat-app-demo-frontend.vercel.app",
-    credentials: true,
-  },
+    origin: "*",
+    methods: ["PUT", "GET", "POST", "DELETE", "OPTIONS"],
+    credentials: false
+  }
+  transports: ['websocket']
 });
+
+app.use(cors(corsOptions));
 
 global.onlineUsers = new Map();
 io.on("connection", (socket) => {
