@@ -4,11 +4,14 @@ const mongoose = require("mongoose");
 const authRoutes = require("./routes/auth");
 const messageRoutes = require("./routes/messages");
 const app = express();
-const socket = require("socket.io")({
-  cors : {
-    origin:"*"
+const io = require("socket.io")(app, {
+  cors: {
+    origin: "https://chat-app-demo-frontend.vercel.app",
+    methods: ["GET", "POST"],
+    credentials: true
   }
 });
+
 require("dotenv").config();
 app.use(cors(
   {
