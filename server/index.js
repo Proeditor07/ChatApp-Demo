@@ -36,10 +36,9 @@ app.use("/api/messages", messageRoutes);
 const server = app.listen(process.env.PORT, () =>
   console.log(`Server started on ${process.env.PORT}`)
 );
-const io = new Server(server, {
+const io = require('socket.io')(server, {
   cors: {
-    origin: "https://chat-app-demo-frontend.vercel.app",
-    credentials: true
+    origin: '*',
   }
 });
 
