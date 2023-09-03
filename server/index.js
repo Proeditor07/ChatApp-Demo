@@ -39,7 +39,6 @@ const server = app.listen(process.env.PORT, () =>
 const io = new Server(server, {
   cors: {
     origin: "https://chat-app-demo-frontend.vercel.app",
-    allowedHeaders: ["my-custom-header"],
     credentials: true
   }
 });
