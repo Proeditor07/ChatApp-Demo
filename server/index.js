@@ -5,20 +5,6 @@ const authRoutes = require("./routes/auth");
 const messageRoutes = require("./routes/messages");
 const app = express();
 require("dotenv").config();
-const corsOptions = {
-  origin: "*",
-  optionsSuccessStatus: 200
-};
-const io = require("socket.io")(server, {
-  cors: {
-    origin: "*",
-    methods: ["PUT", "GET", "POST", "DELETE", "OPTIONS"],
-    credentials: false
-  }
-  transports: ['websocket']
-});
-
-app.use(cors(corsOptions));
 app.use(cors());
 // app.use(cors());
 // app.use(function (req, res, next) {
@@ -49,12 +35,12 @@ app.use("/api/messages", messageRoutes);
 const server = app.listen(process.env.PORT, () =>
   console.log(`Server started on ${process.env.PORT}`)
 );
-// const io = socket(server, {
-//   cors: {
-//     origin: "https://chat-app-demo-frontend.vercel.app",
-//     credentials: true,
-//   },
-// });
+const io = socket(server, {
+  cors: {
+    origin: "*",
+    credentials: true,
+  },
+});
 
 
 global.onlineUsers = new Map();
